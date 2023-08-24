@@ -3,4 +3,4 @@ select
     first_name,
     last_name
 
-from postgres.target_public.customer
+from {{ source('linux_pl', 'customer') }}
