@@ -1,28 +1,13 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
 
 with customers as (
 
-	select
-        customer_id,
-        first_name,
-        last_name
-
-    from postgres.target_public.customer
+	select * from {{ ref('stg_customers') }}
 
 ),
 
 rentals as(
 
-    select
-        rental_id,
-        customer_id,
-        rental_date
-
-    from postgres.target_public.rental
+    select * from {{ ref('stg_rentals') }}
 
 ),
 
